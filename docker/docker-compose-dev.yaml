@@ -1,0 +1,60 @@
+version: '2'
+services:
+  sonda:
+    image: iagofcfm/sonda:latest
+    build:
+      context: ..
+      dockerfile: Dockerfile-dev
+    network_mode: "host"
+    volumes:
+      - ${SHARED_FOLDER}:/data/images
+      - videos:/tmp/videos:ro
+      - $PWD/../webgrabplus/data:/opt/data_manager/epg_data
+      - $PWD/../data-manager/data_manager/static/swagger.json:/opt/data_manager/static/swagger.json
+    environment:
+      - VIDEOMOS_USER
+      - VIDEOMOS_PASSWORD
+      - API_PORT
+      - DB_PORT
+      - VIDEOMOS_LOG_LEVEL=INFO
+      - VIDEOMOS_MAX_RAM_MB=1500
+      - VQPREDICTION_MODE=development
+      - LANG=es_ES.UTF-8
+      - LANGUAGE=es_ES.UTF-8
+      - LC_ALL=es_ES.UTF-8
+      - TZ=Europe/Madrid
+  websonda:
+    image: iagofcfm/sonda:latest-w
+    build:
+      context: ../websonda
+      dockerfile: docker/Dockerfile-nuxt-dev
+    network_mode: "host"
+    volumes:
+    - ${SHARED_FOLDER}:/usr/src/nuxt-app/static/image/frame
+    environment:
+      - API_PORT
+      - NUXT_PORT
+  mongo:
+    image: mongo:4.2
+    network_mode: "host"
+    entrypoint: mongod --port ${DB_PORT} --syslog
+  webgrabplus:
+    image: linuxserver/webgrabplus:V3.1.0-ls61
+    network_mode: "host"
+    entrypoint: [ "/config/entrypoint.sh" ]
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Madrid
+    volumes:
+      - $PWD/../webgrabplus/config:/config
+      - $PWD/../webgrabplus/data:/data
+    restart: on-failure
+volumes:
+  videos: 
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: $PWD/../test-contents/videos
+                

@@ -1,0 +1,9 @@
+{
+  "projects": {
+    "data-manager": "git@gitlab.com:davidGATV/data-manager.git",
+    "video-quality-prediction": "git@gitlab.com:davidGATV/video-quality-prediction.git",
+    "videoqualityprobe_live": "git@gitlab.com:AndresAAV/videoqualityprobe_live.git",
+    "videoqualityprobe_vod": "git@gitlab.com:AndresAAV/videoqualityprobe_vod.git",
+    "websonda": "git@gitlab.com:visionaip/websonda.git"
+  }
+}

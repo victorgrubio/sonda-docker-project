@@ -1,0 +1,16 @@
+docker_volume_folder*/
+*.pdf
+.local
+*log*
+hot_cookies.txt
+robots
+
+*.xml
+*.ini
+*.es
+*.com
+*.org
+*.txt
+
+**/epg_config/.bash_history
+**/epg_config/.selected_editor

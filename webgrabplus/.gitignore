@@ -1,0 +1,5 @@
+config/*.log*
+data/*.xml
+config/.local
+hot_cookies.txt
+config/robots

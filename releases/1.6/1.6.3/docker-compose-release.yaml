@@ -1,0 +1,56 @@
+version: '2'
+services:
+  sonda:
+    image: iagofcfm/sonda:1.6.3
+    network_mode: "host"
+    volumes:
+      - ./${SHARED_FOLDER}:/data/images
+      - videos:/tmp/videos
+      - ./epg_data:/opt/data_manager/epg_data
+    environment:
+      - VIDEOMOS_USER
+      - VIDEOMOS_PASSWORD
+      - API_PORT
+      - DB_PORT
+      - VIDEOMOS_LOG_LEVEL=WARNING
+      - VIDEOMOS_MAX_RAM_MB=1500
+      - VQPREDICTION_MODE=production
+      - LANG=es_ES.UTF-8
+      - LANGUAGE=es_ES.UTF-8
+      - LC_ALL=es_ES.UTF-8
+      - TZ=Europe/Madrid
+    depends_on:
+      - mongo
+  websonda:
+    image: iagofcfm/sonda:1.6.3-w
+    network_mode: "host"
+    volumes:
+      - ./${SHARED_FOLDER}:/usr/src/nuxt-app/static/image/frame
+    environment:
+      - API_PORT=${API_PORT}
+      - NUXT_PORT=${NUXT_PORT}
+  mongo:
+    image: mongo:4.2
+    network_mode: "host"
+    entrypoint: mongod --port ${DB_PORT} --wiredTigerCacheSizeGB ${VIDEOMOS_DBCACHE_GB} --syslog
+    volumes:
+      - ./${API_PORT}_mongo:/data/db
+  webgrabplus:
+    image: linuxserver/webgrabplus:V3.1.0-ls61
+    network_mode: "host"
+    entrypoint: ["/bin/bash", "/config/entrypoint.sh"]
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Madrid
+    volumes:
+      - ./epg_config:/config
+      - ./epg_data:/data
+    restart: on-failure
+volumes:
+  videos: # Write here the path of the VoD folder to use in VideoMOS 
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: /mnt

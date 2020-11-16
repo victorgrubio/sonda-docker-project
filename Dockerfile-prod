@@ -1,0 +1,161 @@
+FROM ubuntu:18.04
+ENV TZ="Europe/Madrid"
+RUN apt-get update --fix-missing \
+	&& apt-get upgrade -y \
+	&& apt-get install -y python3-minimal \
+	python3-pip \
+	gcc  \
+	build-essential \
+	nano \
+	git \
+	apache2  \
+	wget \
+	unzip \
+	cmake \
+	pkg-config \
+	&& apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 68818C72E52529D4 \
+	&& echo "deb http://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/4.0 multiverse" | tee /etc/apt/sources.list.d/mongodb-org-4.0.list \
+	&& apt-get update \
+	&& apt-get upgrade -y \
+    && ln -snf /usr/share/zoneinfo/$TZ /etc/localtime \
+    && echo $TZ > /etc/timezone \
+	&& apt-get install -y tzdata mongodb-org \
+	&& apt-get clean \
+	&& mkdir -p /data/db \
+	&& mkdir /var/www/html/proyectos \
+	&& mkdir /var/www/html/proyectos/videoqualityprobe \
+	&& mkdir /var/www/html/proyectos/video-quality-prediction \
+    && apt-get install -y libssl-dev libsasl2-dev \
+    && cd /home \
+        && wget https://github.com/mongodb/mongo-c-driver/releases/download/1.6.2/mongo-c-driver-1.6.2.tar.gz \
+        && tar xzf mongo-c-driver-1.6.2.tar.gz \
+    && cd mongo-c-driver-1.6.2 \
+        && ./configure --disable-automatic-init-and-cleanup \
+        && make -j32 \
+        && make install \
+        && make clean \
+    && cd .. \
+        && rm -r mongo-c-driver-1.6.2.tar.gz \
+        && rm -r mongo-c-driver-1.6.2 \
+	&& cd /tmp \
+        && wget https://github.com/mongodb/mongo-cxx-driver/archive/r3.1.1.tar.gz \
+        && tar -xzf r3.1.1.tar.gz \
+        && cd mongo-cxx-driver-r3.1.1/build \
+        && cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/local .. \
+        && make EP_mnmlstc_core \
+        && make -j32 \
+        && make install \
+        && make clean \
+        && cd ../.. \
+        && rm -r r3.1.1.tar.gz \
+        && rm -r mongo-cxx-driver-r3.1.1 \
+    && apt-get update --fix-missing \
+	&& apt-get install -y --no-install-recommends libjpeg-dev \
+		libpng-dev \
+		libtiff-dev \
+		libavcodec-dev \
+		libavformat-dev \
+		libswscale-dev \
+		libv4l-dev \
+		libxvidcore-dev \
+		libx264-dev \
+		libgtk-3-dev --fix-missing \
+		libatlas-base-dev \
+    && cd /home \
+	    && wget -O opencv.zip https://github.com/opencv/opencv/archive/3.4.9.zip \
+	    && unzip opencv.zip \
+	    && mv opencv-3.4 opencv \
+	    && cd opencv \
+	    && mkdir build \
+	    && cd build \
+	    && cmake -D CMAKE_BUILD_TYPE=RELEASE \
+     -DCMAKE_INSTALL_PREFIX=/usr/local \
+     -DINSTALL_PYTHON_EXAMPLES=OFF \
+     -DINSTALL_C_EXAMPLES=OFF \
+     -DOPENCV_ENABLE_NONFREE=OFF \
+     -DBUILD_JAVA=OFF \ 
+     -DBUILD_JPEG=ON \                                     
+     -DBUILD_OPENEXR=OFF \               
+     -DBUILD_PERF_TESTS=OFF \         
+     -DBUILD_PNG=ON \                                      
+     -DBUILD_PROTOBUF=OFF \                                       
+     -DBUILD_TBB=ON \                                      
+     -DBUILD_TESTS=OFF \                                      
+     -DBUILD_TIFF=OFF \                                        
+     -DBUILD_WITH_DYNAMIC_IPP=ON \    
+     -DBUILD_ZLIB=OFF \                                      
+     -DBUILD_opencv_apps=OFF \               
+     -DBUILD_opencv_calib3d=OFF \     
+     -DBUILD_opencv_cudaarithm=OFF \                  
+     -DBUILD_opencv_cudabgsegm=OFF \  
+     -DBUILD_opencv_cudacodec=OFF \      
+     -DBUILD_opencv_cudafeatures2d=OFF \      
+     -DBUILD_opencv_cudafilters=OFF \    
+     -DBUILD_opencv_cudaimgproc=OFF \     
+     -DBUILD_opencv_cudalegacy=OFF \    
+     -DBUILD_opencv_cudaobjdetect=OFF \       
+     -DBUILD_opencv_cudaoptflow=OFF \     
+     -DBUILD_opencv_cudastereo=OFF \      
+     -DBUILD_opencv_cudawarping=OFF \      
+     -DBUILD_opencv_cudev=OFF \                                    
+     -DBUILD_opencv_dnn=OFF \                              
+     -DBUILD_opencv_features2d=OFF \                              
+     -DBUILD_opencv_flann=0FF \                        
+     -DBUILD_opencv_js=OFF \                                   
+     -DBUILD_opencv_ml=OFF \                                  
+     -DBUILD_opencv_objdetect=OFF \     
+     -DBUILD_opencv_photo=OFF \
+     -DBUILD_opencv_python2=OFF \
+     -DBUILD_opencv_stitching=OFF \ 
+     -DBUILD_opencv_superres=OFF \
+     -DBUILD_opencv_ts=ON \   
+     -DBUILD_opencv_videostab=ON \
+     -DWITH_CUBLAS=ON \ 
+     -DWITH_CUDA=OFF \    
+     -DWITH_GSTREAMER=ON \ 
+     -DBUILD_IPP_IW=ON \
+     -DBUILD_ITT=OFF \ 
+     -DCV_TRACE=ON \ 
+     -DCV_ENABLE_INTRINSICS=ON \
+     -DWITH_ITT=ON \ 
+     -DWITH_IPP=ON \
+     -DWITH_V4L=ON .. \
+	    && make -j32 \
+	    && make install \
+	&& cd /home/opencv/build/lib \
+	    && cp libopencv_core.so.3.4 /lib/x86_64-linux-gnu \
+	    && cp libopencv_highgui.so.3.4 /lib/x86_64-linux-gnu \
+	    && cp libopencv_videoio.so.3.4 /lib/x86_64-linux-gnu \ 
+	    && cp libopencv_imgcodecs.so.3.4 /lib/x86_64-linux-gnu \
+	    && cp libopencv_imgproc.so.3.4 /lib/x86_64-linux-gnu \
+	    && cp libopencv_imgcodecs.so.3.4 /lib/x86_64-linux-gnu \
+	&& cd /home \
+	    && rm -rf opencv.zip \
+	    && rm -rf opencv \
+	&& apt-get clean \
+	&& apt-get purge -y gcc \
+	    build-essential \
+	    nano \
+	    git \
+	    wget \
+	    unzip \
+	    cmake \
+	    pkg-config \
+	&& apt-get autoremove -y
+	    
+# copy cannot  be chained with &&, although some optimizations could be made to this.
+COPY videoqualityprobe/Release /opt/videoqualityprobe/Release 
+COPY docker/docker-entrypoint.sh /
+COPY data-manager /opt/data-manager
+COPY video-quality-prediction/dist /opt/video-quality-prediction/dist
+RUN pip3 install --no-cache-dir -r /opt/data-manager/requirements.txt \
+    && rm -rf ~/.cache/* \
+    && cd /usr/local/lib \
+    && cp libbsoncxx.so._noabi /lib/x86_64-linux-gnu \
+    && cp libmongocxx.so._noabi /lib/x86_64-linux-gnu \
+    && rm -rf /tmp/*
+    
+ENV LD_LIBRARY_PATH="/usr/local/lib:/lib/x86_64-linux-gnu"
+ENV PYTHONPATH "${PYTHONPATH}:/opt/data-manageer"
+WORKDIR /
+ENTRYPOINT ["./docker-entrypoint.sh"]

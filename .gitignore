@@ -1,0 +1,44 @@
+webgrabplus/config
+.env
+
+videos
+
+*.docx
+
+/data-manager/
+/video-quality-prediction/
+/videoqualityprobe_live/
+/videoqualityprobe_vod/
+/websonda/
+
+epg_data
+epg_config/.local
+
+# Eclipse config
+.pydev*
+.settings
+.project
+
+# Node
+node_modules
+
+# VSCode
+.vscode
+
+# Tmp & Docker volume folder
+docker_volume_folder*
+tmp
+
+# Compressed files
+*.zip
+*.rar
+*.tar*
+
+# CSV
+*.csv
+
+# docker grafana
+docker/experimental/grafana-data
+
+# Logs
+*log*

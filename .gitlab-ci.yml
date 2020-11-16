@@ -1,0 +1,27 @@
+image: docker:latest
+services:
+  - docker:dind
+
+variables:
+  GIT_SUBMODULE_STRATEGY: recursive
+
+stages:
+  - test
+
+before_script:
+  - sudo apt install -y python3-venv
+  - cd video-quality-prediction
+  - source compile_videoqualityprediction.sh
+  - cd ..
+
+step-dev:
+  cache:
+    paths:
+      - video-quality-prediction/dist/
+  stage: test
+  only:
+    - dev
+  tags:
+    - dev
+  script:
+    - ./test_sonda_docker_compose_dev.sh

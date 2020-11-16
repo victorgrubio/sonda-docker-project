@@ -1,0 +1,25 @@
+version: '2'
+services:
+  sonda:
+    image: iagofcfm/sonda:1.5.2
+    container_name: ${API_PORT}_sonda
+    network_mode: "host"
+    volumes:
+      - ./${SHARED_FOLDER}:/data/images
+    environment:
+      - API_PORT=${API_PORT}
+      - DB_PORT=${DB_PORT}
+  websonda:
+    image: iagofcfm/sonda:1.5.2-w
+    container_name: ${API_PORT}_websonda
+    network_mode: "host"
+    volumes:
+      - ./${SHARED_FOLDER}:/usr/src/nuxt-app/static/image/frame
+    environment:
+      - API_PORT=${API_PORT}
+      - WEB_PORT=${WEB_PORT}
+  mongo:
+    image: mongo:4
+    container_name: ${API_PORT}_mongo
+    network_mode: "host"
+    entrypoint: mongod --port ${DB_PORT} --syslog

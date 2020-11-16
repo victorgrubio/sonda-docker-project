@@ -1,0 +1,35 @@
+version: '3.7'
+services:
+  sonda:
+    image: iagofcfm/sonda:latest-test
+    container_name: ${API_PORT}_sonda
+    build:
+      context: ..
+      dockerfile: Dockerfile-test
+    network_mode: "host"
+    volumes:
+    - ${SHARED_FOLDER}:/data/images
+    environment:
+      - API_PORT
+      - DB_PORT
+    healthcheck:
+      test: curl --fail -s http://localhost:${API_PORT}/videoAnalysis/probe/status || exit 1
+      interval: 1m30s
+      timeout: 10s
+      retries: 3
+  mongo:
+    image: mongo:4
+    container_name: ${API_PORT}_mongo
+    network_mode: "host"
+    entrypoint: mongod --port ${DB_PORT} --syslog
+  sonda_tests:
+    image: iagofcfm/sonda:latest-test
+    network_mode: "host"
+    entrypoint: ./opt/test-docker-entrypoint.sh
+    environment:
+      - API_PORT
+      - DB_PORT
+    volumes:
+    - ../data-manager/tests/data:/opt/data_manager/tests/data
+    depends_on: 
+      - sonda

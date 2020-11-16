@@ -1,0 +1,3502 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="main.css">
+    <meta charset="UTF-8">
+    <title>Swagger Video Analysis</title>
+                                                         </head>
+<body>
+<div class="container">
+    <h1>Swagger Video Analysis</h1>
+    <p class="sw-info">
+        Base URL: <span class="sw-info-basePath">/</span>,
+        Version: <span class="sw-info-version">1.0.0</span>
+    </p>
+    <p><p>This is a Data Manager serer for video quality analysis. The development of this service is provided by GATV, a research group from the Technical University of Madrid.</p>
+    </p>
+    
+    
+    <div id="sw-schemes" class="sw-default-value">
+        <span class="sw-default-value-header">Schemes:</span>
+        
+    </div>
+    
+        
+        <h2 id="swagger--summary-tags">Summary</h2>
+            <h3 id="tag-documents" class="swagger-summary-tag">Tag: documents</h3>
+            <p>Measures of MOS</p>
+        
+            <p class="sw-tag-external-doc">
+            </p>
+            <table class="table table-bordered table-condensed swagger--summary">
+                <thead>
+                <tr>
+                    <th>Operation</th>
+                    <th>Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="#operation--videoAnalysis-documents-bulk-post">POST /videoAnalysis/documents/bulk</a></td>
+                        <td><p>Add a new document to the database</p>
+        </td>
+                    </tr>
+                    <tr>
+                        <td><a href="#operation--videoAnalysis-documents-last-get">GET /videoAnalysis/documents/last</a></td>
+                        <td><p>Gets last measure</p>
+        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <h3 id="tag-journeys" class="swagger-summary-tag">Tag: journeys</h3>
+            <p>Journey related methods</p>
+        
+            <p class="sw-tag-external-doc">
+            </p>
+            <table class="table table-bordered table-condensed swagger--summary">
+                <thead>
+                <tr>
+                    <th>Operation</th>
+                    <th>Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="#operation--videoAnalysis-journeys--journey_datetime--mos-get">GET /videoAnalysis/journeys/{journey_datetime}/mos</a></td>
+                        <td><p>Gets average mos of a specific journey</p>
+        </td>
+                    </tr>
+                    <tr>
+                        <td><a href="#operation--videoAnalysis-journeys-date-list-get">GET /videoAnalysis/journeys/date-list</a></td>
+                        <td><p>Gets list of journey datetimes</p>
+        </td>
+                    </tr>
+                    <tr>
+                        <td><a href="#operation--videoAnalysis-journeys--journey_datetime--mos-percentages-get">GET /videoAnalysis/journeys/{journey_datetime}/mos-percentages</a></td>
+                        <td><p>Gets mos percetanges from a journey</p>
+        </td>
+                    </tr>
+                    <tr>
+                        <td><a href="#operation--videoAnalysis-journeys--journey_datetime--alert-number-get">GET /videoAnalysis/journeys/{journey_datetime}/alert-number</a></td>
+                        <td><p>Gets number of alerts/warnings in journey</p>
+        </td>
+                    </tr>
+                    <tr>
+                        <td><a href="#operation--videoAnalysis-journeys--journey_datetime--alert-list-get">GET /videoAnalysis/journeys/{journey_datetime}/alert-list</a></td>
+                        <td><p>Gets alerts/warnings details in journey</p>
+        </td>
+                    </tr>
+                    <tr>
+                        <td><a href="#operation--videoAnalysis-journeys--journey_datetime--program-list-get">GET /videoAnalysis/journeys/{journey_datetime}/program-list</a></td>
+                        <td><p>Gets data of all programs in journey</p>
+        </td>
+                    </tr>
+                    <tr>
+                        <td><a href="#operation--videoAnalysis-journeys--journey_datetime--program-name-list-get">GET /videoAnalysis/journeys/{journey_datetime}/program-name-list</a></td>
+                        <td><p>Gets names of all programs in journey</p>
+        </td>
+                    </tr>
+                    <tr>
+                        <td><a href="#operation--videoAnalysis-journeys--journey_datetime---program_name--get">GET /videoAnalysis/journeys/{journey_datetime}/{program_name}</a></td>
+                        <td><p>Gets data of a concrete program in journey</p>
+        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <h3 id="tag-programs" class="swagger-summary-tag">Tag: programs</h3>
+            <p>Program related methods</p>
+        
+            <p class="sw-tag-external-doc">
+            </p>
+            <table class="table table-bordered table-condensed swagger--summary">
+                <thead>
+                <tr>
+                    <th>Operation</th>
+                    <th>Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="#operation--videoAnalysis-programs--program_name--data-get">GET /videoAnalysis/programs/{program_name}/data</a></td>
+                        <td><p>Gets data of specific program</p>
+        </td>
+                    </tr>
+                    <tr>
+                        <td><a href="#operation--videoAnalysis-programs--program_name--mos-get">GET /videoAnalysis/programs/{program_name}/mos</a></td>
+                        <td><p>Gets average MOS value of specific program</p>
+        </td>
+                    </tr>
+                    <tr>
+                        <td><a href="#operation--videoAnalysis-programs--program_name--mos-percentages-get">GET /videoAnalysis/programs/{program_name}/mos-percentages</a></td>
+                        <td><p>Gets MOS categories of specific program</p>
+        </td>
+                    </tr>
+                    <tr>
+                        <td><a href="#operation--videoAnalysis-programs--program_name--alert-number-get">GET /videoAnalysis/programs/{program_name}/alert-number</a></td>
+                        <td><p>Gets number of alerts/warnings of specific program</p>
+        </td>
+                    </tr>
+                    <tr>
+                        <td><a href="#operation--videoAnalysis-programs--program_name--alert-list-get">GET /videoAnalysis/programs/{program_name}/alert-list</a></td>
+                        <td><p>Gets a list of alerts/warnings of specific program</p>
+        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <h3 id="tag-search" class="swagger-summary-tag">Tag: search</h3>
+            <p>Search methods</p>
+        
+            <p class="sw-tag-external-doc">
+            </p>
+            <table class="table table-bordered table-condensed swagger--summary">
+                <thead>
+                <tr>
+                    <th>Operation</th>
+                    <th>Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="#operation--videoAnalysis-search-data-post">POST /videoAnalysis/search/data</a></td>
+                        <td><p>Returns data from a given date range or journey search</p>
+        </td>
+                    </tr>
+                    <tr>
+                        <td><a href="#operation--videoAnalysis-search-url-post">POST /videoAnalysis/search/url</a></td>
+                        <td><p>Returns data from a given date range or journey search</p>
+        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <h3 id="tag-vod" class="swagger-summary-tag">Tag: vod</h3>
+            <p>VoD methods</p>
+        
+            <p class="sw-tag-external-doc">
+            </p>
+            <table class="table table-bordered table-condensed swagger--summary">
+                <thead>
+                <tr>
+                    <th>Operation</th>
+                    <th>Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="#operation--videoAnalysis-vod-upload-get">GET /videoAnalysis/vod/upload</a></td>
+                        <td><p>Uploads file to server for VOD analysis</p>
+        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <h3 id="tag-videoqualityprobe" class="swagger-summary-tag">Tag: videoqualityprobe</h3>
+            <p>MOS probe management</p>
+        
+            <p class="sw-tag-external-doc">
+            </p>
+            <table class="table table-bordered table-condensed swagger--summary">
+                <thead>
+                <tr>
+                    <th>Operation</th>
+                    <th>Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="#operation--videoAnalysis-probe-launch-post">POST /videoAnalysis/probe/launch</a></td>
+                        <td><p>Launchs Video Quality Probe</p>
+        </td>
+                    </tr>
+                    <tr>
+                        <td><a href="#operation--videoAnalysis-probe-stop-post">POST /videoAnalysis/probe/stop</a></td>
+                        <td><p>Stops Video Quality Probe</p>
+        </td>
+                    </tr>
+                    <tr>
+                        <td><a href="#operation--videoAnalysis-probe-status-get">GET /videoAnalysis/probe/status</a></td>
+                        <td><p>Gets current status of probe</p>
+        </td>
+                    </tr>
+                    <tr>
+                        <td><a href="#operation--videoAnalysis-probe-config-get">GET /videoAnalysis/probe/config</a></td>
+                        <td><p>Gets config of VideoQualityProbe</p>
+        </td>
+                    </tr>
+                    <tr>
+                        <td><a href="#operation--videoAnalysis-probe-config-put">PUT /videoAnalysis/probe/config</a></td>
+                        <td><p>Put new config for probe</p>
+        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <h3 id="tag-database" class="swagger-summary-tag">Tag: database</h3>
+            <p>Database management</p>
+        
+            <p class="sw-tag-external-doc">
+            </p>
+            <table class="table table-bordered table-condensed swagger--summary">
+                <thead>
+                <tr>
+                    <th>Operation</th>
+                    <th>Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="#operation--videoAnalysis-db-import-post">POST /videoAnalysis/db/import</a></td>
+                        <td><p>Imports DB from GZIP</p>
+        </td>
+                    </tr>
+                    <tr>
+                        <td><a href="#operation--videoAnalysis-db-export-get">GET /videoAnalysis/db/export</a></td>
+                        <td><p>Export DB to GZIP</p>
+        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <h3 id="tag-others" class="swagger-summary-tag">Tag: others</h3>
+            <p>Additional methods with non-specific category</p>
+        
+            <p class="sw-tag-external-doc">
+            </p>
+            <table class="table table-bordered table-condensed swagger--summary">
+                <thead>
+                <tr>
+                    <th>Operation</th>
+                    <th>Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="#operation--videoAnalysis-updateFrame-get">GET /videoAnalysis/updateFrame</a></td>
+                        <td><p>Gets thumbnail frame</p>
+        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <h3 id="tag-files" class="swagger-summary-tag">Tag: files</h3>
+            
+            <p class="sw-tag-external-doc">
+            </p>
+            <table class="table table-bordered table-condensed swagger--summary">
+                <thead>
+                <tr>
+                    <th>Operation</th>
+                    <th>Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="#operation--videoAnalysis-files--filename--get">GET /videoAnalysis/files/{filename}</a></td>
+                        <td><p>Gets a file by its URL</p>
+        </td>
+                    </tr>
+                </tbody>
+            </table>
+        
+    
+    
+    
+    <h2>Paths</h2>
+    
+        
+        <span id="path--videoAnalysis-db-export"></span>
+            <div id="operation--videoAnalysis-db-export-get" class="swagger--panel-operation-get panel">
+                <div class="panel-heading">
+                    <div class="operation-summary">Export DB to GZIP</div>
+                    <h3 class="panel-title"><span class="operation-name">GET</span> <strong>/videoAnalysis/db/export</strong></h3>
+                        Tags:
+                            <a href="#tag-database">database</a>
+                </div>
+                <div class="panel-body">
+                    <section class="sw-operation-description">
+                        <p>Export complete DB to GZIP file</p>
+            
+                    </section>
+            
+                    
+                        <section class="sw-request-params">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th class="sw-param-name"></th>
+                                    <th class="sw-param-description"></th>
+                                    <th class="sw-param-type"></th>
+                                    <th class="sw-param-data-type"></th>
+                                    <th class="sw-param-annotation"></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                        <tr>
+                                            <td>
+                                                api_key
+                                            </td>
+                                            <td></td>
+                                            <td>header</td>
+                                            <td>
+                                        <span class="json-property-type">object</span>
+                                        <span class="json-property-range" title="Value limits"></span>
+                                        
+                                            </td>
+                                            <td>
+                                            </td>
+                                        </tr>
+                                </tbody>
+                            </table>
+                        </section>
+                    
+                        <section class="sw-responses">
+                    
+                            <dl>
+                                    <dt class="sw-response-200">
+                                        200 OK
+                                    
+                                    </dt>
+                                    <dd class="sw-response-200">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p>DB as GZIP</p>
+                                            
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                            </div>
+                                            
+                                            </div>                </dd>
+                                    <dt class="sw-response-404">
+                                        404 Not Found
+                                    
+                                    </dt>
+                                    <dd class="sw-response-404">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p>Empty DB</p>
+                                            
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                            </div>
+                                            
+                                            </div>                </dd>
+                                    <dt class="sw-response-default">
+                                        default 
+                                    
+                                    </dt>
+                                    <dd class="sw-response-default">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p>Unexpected server response</p>
+                                            
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                            </div>
+                                            
+                                            </div>                </dd>
+                            </dl>
+                        </section>
+                        <section class="sw-request-security">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th class="sw-request-security-schema"></th>
+                                    <th class="sw-request-security-scopes"></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                        <tr>
+                                            <td><a href="#security-definition-api_key">api_key</a></td>
+                                            <td>
+                                            </td>
+                                        </tr>
+                                </tbody>
+                            </table>
+                        </section>
+                </div>
+            </div>
+        
+        <span id="path--videoAnalysis-db-import"></span>
+            <div id="operation--videoAnalysis-db-import-post" class="swagger--panel-operation-post panel">
+                <div class="panel-heading">
+                    <div class="operation-summary">Imports DB from GZIP</div>
+                    <h3 class="panel-title"><span class="operation-name">POST</span> <strong>/videoAnalysis/db/import</strong></h3>
+                        Tags:
+                            <a href="#tag-database">database</a>
+                </div>
+                <div class="panel-body">
+                    <section class="sw-operation-description">
+                        <p>Imports DB from GZIP</p>
+            
+                    </section>
+            
+                    
+                        <section class="sw-request-params">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th class="sw-param-name"></th>
+                                    <th class="sw-param-description"></th>
+                                    <th class="sw-param-type"></th>
+                                    <th class="sw-param-data-type"></th>
+                                    <th class="sw-param-annotation"></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                        <tr>
+                                            <td>
+                                                api_key
+                                            </td>
+                                            <td></td>
+                                            <td>header</td>
+                                            <td>
+                                        <span class="json-property-type">object</span>
+                                        <span class="json-property-range" title="Value limits"></span>
+                                        
+                                            </td>
+                                            <td>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                file
+                                            </td>
+                                            <td><p>DB in GZIP file with valid schema</p>
+                                        </td>
+                                            <td>formData</td>
+                                            <td>
+                                        <span class="json-property-type">object</span>
+                                        <span class="json-property-range" title="Value limits"></span>
+                                        
+                                            </td>
+                                            <td>
+                                                    <span class="json-property-required"></span>
+                                            </td>
+                                        </tr>
+                                </tbody>
+                            </table>
+                        </section>
+                    
+                        <section class="sw-responses">
+                    
+                            <dl>
+                                    <dt class="sw-response-200">
+                                        200 OK
+                                    
+                                    </dt>
+                                    <dd class="sw-response-200">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p>DB imported successfully</p>
+                                            
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                            </div>
+                                            
+                                            </div>                </dd>
+                                    <dt class="sw-response-405">
+                                        405 Method Not Allowed
+                                    
+                                    </dt>
+                                    <dd class="sw-response-405">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p>Invalid input</p>
+                                            
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                            </div>
+                                            
+                                            </div>                </dd>
+                                    <dt class="sw-response-default">
+                                        default 
+                                    
+                                    </dt>
+                                    <dd class="sw-response-default">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p>Unexpected server response</p>
+                                            
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                            </div>
+                                            
+                                            </div>                </dd>
+                            </dl>
+                        </section>
+                        <section class="sw-request-security">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th class="sw-request-security-schema"></th>
+                                    <th class="sw-request-security-scopes"></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                        <tr>
+                                            <td><a href="#security-definition-api_key">api_key</a></td>
+                                            <td>
+                                            </td>
+                                        </tr>
+                                </tbody>
+                            </table>
+                        </section>
+                </div>
+            </div>
+        
+        <span id="path--videoAnalysis-documents-bulk"></span>
+            <div id="operation--videoAnalysis-documents-bulk-post" class="swagger--panel-operation-post panel">
+                <div class="panel-heading">
+                    <div class="operation-summary">Add a new document to the database</div>
+                    <h3 class="panel-title"><span class="operation-name">POST</span> <strong>/videoAnalysis/documents/bulk</strong></h3>
+                        Tags:
+                            <a href="#tag-documents">documents</a>
+                </div>
+                <div class="panel-body">
+                    <section class="sw-operation-description">
+                        <p>Add new document from probe to MongoDB</p>
+            
+                    </section>
+            
+                    
+                        <section class="sw-request-params">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th class="sw-param-name"></th>
+                                    <th class="sw-param-description"></th>
+                                    <th class="sw-param-type"></th>
+                                    <th class="sw-param-data-type"></th>
+                                    <th class="sw-param-annotation"></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                        <tr>
+                                            <td>
+                                                api_key
+                                            </td>
+                                            <td></td>
+                                            <td>header</td>
+                                            <td>
+                                        <span class="json-property-type">object</span>
+                                        <span class="json-property-range" title="Value limits"></span>
+                                        
+                                            </td>
+                                            <td>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                mode
+                                            </td>
+                                            <td><p>Working mode</p>
+                                        </td>
+                                            <td>header</td>
+                                            <td>
+                                        <span class="json-property-type">object</span>
+                                        <span class="json-property-range" title="Value limits"></span>
+                                        
+                                            </td>
+                                            <td>
+                                                    <span class="json-property-required"></span>
+                                            </td>
+                                        </tr>
+                                </tbody>
+                            </table>
+                        </section>
+                    
+                        <section class="sw-responses">
+                    
+                            <dl>
+                                    <dt class="sw-response-200">
+                                        200 OK
+                                    
+                                    </dt>
+                                    <dd class="sw-response-200">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p>successful operation</p>
+                                            
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                            </div>
+                                            
+                                            </div>                </dd>
+                                    <dt class="sw-response-405">
+                                        405 Method Not Allowed
+                                    
+                                    </dt>
+                                    <dd class="sw-response-405">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p>Invalid input</p>
+                                            
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                                <div  class="panel panel-definition">
+                                                    <div class="panel-body">
+                                                                <a class="json-schema-ref" href="#/components/schemas/ErrorResponse">#/components/schemas/ErrorResponse</a>
+                                                    </div>
+                                                </div></div>
+                                            
+                                            </div>                </dd>
+                                    <dt class="sw-response-default">
+                                        default 
+                                    
+                                    </dt>
+                                    <dd class="sw-response-default">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p>Unexpected server response</p>
+                                            
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                            </div>
+                                            
+                                            </div>                </dd>
+                            </dl>
+                        </section>
+                        <section class="sw-request-security">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th class="sw-request-security-schema"></th>
+                                    <th class="sw-request-security-scopes"></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                        <tr>
+                                            <td><a href="#security-definition-api_key">api_key</a></td>
+                                            <td>
+                                            </td>
+                                        </tr>
+                                </tbody>
+                            </table>
+                        </section>
+                </div>
+            </div>
+        
+        <span id="path--videoAnalysis-documents-last"></span>
+            <div id="operation--videoAnalysis-documents-last-get" class="swagger--panel-operation-get panel">
+                <div class="panel-heading">
+                    <div class="operation-summary">Gets last measure</div>
+                    <h3 class="panel-title"><span class="operation-name">GET</span> <strong>/videoAnalysis/documents/last</strong></h3>
+                        Tags:
+                            <a href="#tag-documents">documents</a>
+                </div>
+                <div class="panel-body">
+                    <section class="sw-operation-description">
+                        <p>Gets last measure from DB</p>
+            
+                    </section>
+            
+                    
+                        <section class="sw-request-params">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th class="sw-param-name"></th>
+                                    <th class="sw-param-description"></th>
+                                    <th class="sw-param-type"></th>
+                                    <th class="sw-param-data-type"></th>
+                                    <th class="sw-param-annotation"></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                        <tr>
+                                            <td>
+                                                api_key
+                                            </td>
+                                            <td></td>
+                                            <td>header</td>
+                                            <td>
+                                        <span class="json-property-type">object</span>
+                                        <span class="json-property-range" title="Value limits"></span>
+                                        
+                                            </td>
+                                            <td>
+                                            </td>
+                                        </tr>
+                                </tbody>
+                            </table>
+                        </section>
+                    
+                        <section class="sw-responses">
+                    
+                            <dl>
+                                    <dt class="sw-response-200">
+                                        200 OK
+                                    
+                                    </dt>
+                                    <dd class="sw-response-200">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p>Last document in DB</p>
+                                            
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                            </div>
+                                            
+                                            </div>                </dd>
+                                    <dt class="sw-response-404">
+                                        404 Not Found
+                                    
+                                    </dt>
+                                    <dd class="sw-response-404">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p>Empty database</p>
+                                            
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                            </div>
+                                            
+                                            </div>                </dd>
+                                    <dt class="sw-response-default">
+                                        default 
+                                    
+                                    </dt>
+                                    <dd class="sw-response-default">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p>Unexpected server response</p>
+                                            
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                            </div>
+                                            
+                                            </div>                </dd>
+                            </dl>
+                        </section>
+                        <section class="sw-request-security">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th class="sw-request-security-schema"></th>
+                                    <th class="sw-request-security-scopes"></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                        <tr>
+                                            <td><a href="#security-definition-api_key">api_key</a></td>
+                                            <td>
+                                            </td>
+                                        </tr>
+                                </tbody>
+                            </table>
+                        </section>
+                </div>
+            </div>
+        
+        <span id="path--videoAnalysis-files--filename-"></span>
+            <div id="operation--videoAnalysis-files--filename--get" class="swagger--panel-operation-get panel">
+                <div class="panel-heading">
+                    <div class="operation-summary">Gets a file by its URL</div>
+                    <h3 class="panel-title"><span class="operation-name">GET</span> <strong>/videoAnalysis/files/{filename}</strong></h3>
+                        Tags:
+                            <a href="#tag-files">files</a>
+                </div>
+                <div class="panel-body">
+                    <section class="sw-operation-description">
+                        <p>Returns the file correspondent to the specified URL</p>
+            
+                    </section>
+            
+                    
+                        <section class="sw-request-params">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th class="sw-param-name"></th>
+                                    <th class="sw-param-description"></th>
+                                    <th class="sw-param-type"></th>
+                                    <th class="sw-param-data-type"></th>
+                                    <th class="sw-param-annotation"></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                        <tr>
+                                            <td>
+                                                api_key
+                                            </td>
+                                            <td></td>
+                                            <td>header</td>
+                                            <td>
+                                        <span class="json-property-type">object</span>
+                                        <span class="json-property-range" title="Value limits"></span>
+                                        
+                                            </td>
+                                            <td>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                filename
+                                            </td>
+                                            <td></td>
+                                            <td>path</td>
+                                            <td>
+                                        <span class="json-property-type">object</span>
+                                        <span class="json-property-range" title="Value limits"></span>
+                                        
+                                            </td>
+                                            <td>
+                                                    <span class="json-property-required"></span>
+                                            </td>
+                                        </tr>
+                                </tbody>
+                            </table>
+                        </section>
+                    
+                        <section class="sw-responses">
+                    
+                            <dl>
+                                    <dt class="sw-response-200">
+                                        200 OK
+                                    
+                                    </dt>
+                                    <dd class="sw-response-200">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p>File requested</p>
+                                            
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                            </div>
+                                            
+                                            </div>                </dd>
+                                    <dt class="sw-response-404">
+                                        404 Not Found
+                                    
+                                    </dt>
+                                    <dd class="sw-response-404">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p>File not found</p>
+                                            
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                            </div>
+                                            
+                                            </div>                </dd>
+                                    <dt class="sw-response-default">
+                                        default 
+                                    
+                                    </dt>
+                                    <dd class="sw-response-default">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p>Unexpected server response</p>
+                                            
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                            </div>
+                                            
+                                            </div>                </dd>
+                            </dl>
+                        </section>
+                        <section class="sw-request-security">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th class="sw-request-security-schema"></th>
+                                    <th class="sw-request-security-scopes"></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                        <tr>
+                                            <td><a href="#security-definition-api_key">api_key</a></td>
+                                            <td>
+                                            </td>
+                                        </tr>
+                                </tbody>
+                            </table>
+                        </section>
+                </div>
+            </div>
+        
+        <span id="path--videoAnalysis-journeys-date-list"></span>
+            <div id="operation--videoAnalysis-journeys-date-list-get" class="swagger--panel-operation-get panel">
+                <div class="panel-heading">
+                    <div class="operation-summary">Gets list of journey datetimes</div>
+                    <h3 class="panel-title"><span class="operation-name">GET</span> <strong>/videoAnalysis/journeys/date-list</strong></h3>
+                        Tags:
+                            <a href="#tag-journeys">journeys</a>
+                </div>
+                <div class="panel-body">
+                    <section class="sw-operation-description">
+                        <p>Returns the list of journey datetimes</p>
+            
+                    </section>
+            
+                    
+                    
+                        <section class="sw-responses">
+                    
+                            <dl>
+                                    <dt class="sw-response-200">
+                                        200 OK
+                                    
+                                    </dt>
+                                    <dd class="sw-response-200">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p>List of journeys start datetimes</p>
+                                            
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                            </div>
+                                            
+                                            </div>                </dd>
+                                    <dt class="sw-response-404">
+                                        404 Not Found
+                                    
+                                    </dt>
+                                    <dd class="sw-response-404">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p>No journeys in DB</p>
+                                            
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                            </div>
+                                            
+                                            </div>                </dd>
+                                    <dt class="sw-response-default">
+                                        default 
+                                    
+                                    </dt>
+                                    <dd class="sw-response-default">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p>Unexpected server response</p>
+                                            
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                            </div>
+                                            
+                                            </div>                </dd>
+                            </dl>
+                        </section>
+                        <section class="sw-request-security">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th class="sw-request-security-schema"></th>
+                                    <th class="sw-request-security-scopes"></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                        <tr>
+                                            <td><a href="#security-definition-api_key">api_key</a></td>
+                                            <td>
+                                            </td>
+                                        </tr>
+                                </tbody>
+                            </table>
+                        </section>
+                </div>
+            </div>
+        
+        <span id="path--videoAnalysis-journeys--journey_datetime--alert-list"></span>
+            <div id="operation--videoAnalysis-journeys--journey_datetime--alert-list-get" class="swagger--panel-operation-get panel">
+                <div class="panel-heading">
+                    <div class="operation-summary">Gets alerts/warnings details in journey</div>
+                    <h3 class="panel-title"><span class="operation-name">GET</span> <strong>/videoAnalysis/journeys/{journey_datetime}/alert-list</strong></h3>
+                        Tags:
+                            <a href="#tag-journeys">journeys</a>
+                </div>
+                <div class="panel-body">
+                    <section class="sw-operation-description">
+                        <p>Returns the details of alerts and warnings of a concrete journey</p>
+            
+                    </section>
+            
+                    
+                        <section class="sw-request-params">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th class="sw-param-name"></th>
+                                    <th class="sw-param-description"></th>
+                                    <th class="sw-param-type"></th>
+                                    <th class="sw-param-data-type"></th>
+                                    <th class="sw-param-annotation"></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                        <tr>
+                                            <td>
+                                                journey_datetime
+                                            </td>
+                                            <td></td>
+                                            <td>path</td>
+                                            <td>
+                                        <span class="json-property-type">object</span>
+                                        <span class="json-property-range" title="Value limits"></span>
+                                        
+                                            </td>
+                                            <td>
+                                                    <span class="json-property-required"></span>
+                                            </td>
+                                        </tr>
+                                </tbody>
+                            </table>
+                        </section>
+                    
+                        <section class="sw-responses">
+                    
+                            <dl>
+                                    <dt class="sw-response-200">
+                                        200 OK
+                                    
+                                    </dt>
+                                    <dd class="sw-response-200">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p>List of alerts and warnings</p>
+                                            
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                            </div>
+                                            
+                                            </div>                </dd>
+                                    <dt class="sw-response-404">
+                                        404 Not Found
+                                    
+                                    </dt>
+                                    <dd class="sw-response-404">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p>Journey not found</p>
+                                            
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                            </div>
+                                            
+                                            </div>                </dd>
+                                    <dt class="sw-response-default">
+                                        default 
+                                    
+                                    </dt>
+                                    <dd class="sw-response-default">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p>Unexpected server response</p>
+                                            
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                            </div>
+                                            
+                                            </div>                </dd>
+                            </dl>
+                        </section>
+                        <section class="sw-request-security">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th class="sw-request-security-schema"></th>
+                                    <th class="sw-request-security-scopes"></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                        <tr>
+                                            <td><a href="#security-definition-api_key">api_key</a></td>
+                                            <td>
+                                            </td>
+                                        </tr>
+                                </tbody>
+                            </table>
+                        </section>
+                </div>
+            </div>
+        
+        <span id="path--videoAnalysis-journeys--journey_datetime--alert-number"></span>
+            <div id="operation--videoAnalysis-journeys--journey_datetime--alert-number-get" class="swagger--panel-operation-get panel">
+                <div class="panel-heading">
+                    <div class="operation-summary">Gets number of alerts/warnings in journey</div>
+                    <h3 class="panel-title"><span class="operation-name">GET</span> <strong>/videoAnalysis/journeys/{journey_datetime}/alert-number</strong></h3>
+                        Tags:
+                            <a href="#tag-journeys">journeys</a>
+                </div>
+                <div class="panel-body">
+                    <section class="sw-operation-description">
+                        <p>Returns the number of alerts/warnings in a concretejourney</p>
+            
+                    </section>
+            
+                    
+                        <section class="sw-request-params">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th class="sw-param-name"></th>
+                                    <th class="sw-param-description"></th>
+                                    <th class="sw-param-type"></th>
+                                    <th class="sw-param-data-type"></th>
+                                    <th class="sw-param-annotation"></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                        <tr>
+                                            <td>
+                                                journey_datetime
+                                            </td>
+                                            <td></td>
+                                            <td>path</td>
+                                            <td>
+                                        <span class="json-property-type">object</span>
+                                        <span class="json-property-range" title="Value limits"></span>
+                                        
+                                            </td>
+                                            <td>
+                                                    <span class="json-property-required"></span>
+                                            </td>
+                                        </tr>
+                                </tbody>
+                            </table>
+                        </section>
+                    
+                        <section class="sw-responses">
+                    
+                            <dl>
+                                    <dt class="sw-response-200">
+                                        200 OK
+                                    
+                                    </dt>
+                                    <dd class="sw-response-200">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p>Alert categories with count</p>
+                                            
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                            </div>
+                                            
+                                            </div>                </dd>
+                                    <dt class="sw-response-404">
+                                        404 Not Found
+                                    
+                                    </dt>
+                                    <dd class="sw-response-404">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p>Journey not found</p>
+                                            
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                            </div>
+                                            
+                                            </div>                </dd>
+                                    <dt class="sw-response-default">
+                                        default 
+                                    
+                                    </dt>
+                                    <dd class="sw-response-default">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p>Unexpected server response</p>
+                                            
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                            </div>
+                                            
+                                            </div>                </dd>
+                            </dl>
+                        </section>
+                        <section class="sw-request-security">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th class="sw-request-security-schema"></th>
+                                    <th class="sw-request-security-scopes"></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                        <tr>
+                                            <td><a href="#security-definition-api_key">api_key</a></td>
+                                            <td>
+                                            </td>
+                                        </tr>
+                                </tbody>
+                            </table>
+                        </section>
+                </div>
+            </div>
+        
+        <span id="path--videoAnalysis-journeys--journey_datetime--mos"></span>
+            <div id="operation--videoAnalysis-journeys--journey_datetime--mos-get" class="swagger--panel-operation-get panel">
+                <div class="panel-heading">
+                    <div class="operation-summary">Gets average mos of a specific journey</div>
+                    <h3 class="panel-title"><span class="operation-name">GET</span> <strong>/videoAnalysis/journeys/{journey_datetime}/mos</strong></h3>
+                        Tags:
+                            <a href="#tag-journeys">journeys</a>
+                </div>
+                <div class="panel-body">
+                    <section class="sw-operation-description">
+                        <p>Returns the average mos of a specific journey</p>
+            
+                    </section>
+            
+                    
+                        <section class="sw-request-params">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th class="sw-param-name"></th>
+                                    <th class="sw-param-description"></th>
+                                    <th class="sw-param-type"></th>
+                                    <th class="sw-param-data-type"></th>
+                                    <th class="sw-param-annotation"></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                        <tr>
+                                            <td>
+                                                journey_datetime
+                                            </td>
+                                            <td></td>
+                                            <td>path</td>
+                                            <td>
+                                        <span class="json-property-type">object</span>
+                                        <span class="json-property-range" title="Value limits"></span>
+                                        
+                                            </td>
+                                            <td>
+                                                    <span class="json-property-required"></span>
+                                            </td>
+                                        </tr>
+                                </tbody>
+                            </table>
+                        </section>
+                    
+                        <section class="sw-responses">
+                    
+                            <dl>
+                                    <dt class="sw-response-200">
+                                        200 OK
+                                    
+                                    </dt>
+                                    <dd class="sw-response-200">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p>Mos value of journey</p>
+                                            
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                            </div>
+                                            
+                                            </div>                </dd>
+                                    <dt class="sw-response-404">
+                                        404 Not Found
+                                    
+                                    </dt>
+                                    <dd class="sw-response-404">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p>Journey not found</p>
+                                            
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                            </div>
+                                            
+                                            </div>                </dd>
+                                    <dt class="sw-response-default">
+                                        default 
+                                    
+                                    </dt>
+                                    <dd class="sw-response-default">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p>Unexpected server response</p>
+                                            
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                            </div>
+                                            
+                                            </div>                </dd>
+                            </dl>
+                        </section>
+                        <section class="sw-request-security">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th class="sw-request-security-schema"></th>
+                                    <th class="sw-request-security-scopes"></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                        <tr>
+                                            <td><a href="#security-definition-api_key">api_key</a></td>
+                                            <td>
+                                            </td>
+                                        </tr>
+                                </tbody>
+                            </table>
+                        </section>
+                </div>
+            </div>
+        
+        <span id="path--videoAnalysis-journeys--journey_datetime--mos-percentages"></span>
+            <div id="operation--videoAnalysis-journeys--journey_datetime--mos-percentages-get" class="swagger--panel-operation-get panel">
+                <div class="panel-heading">
+                    <div class="operation-summary">Gets mos percetanges from a journey</div>
+                    <h3 class="panel-title"><span class="operation-name">GET</span> <strong>/videoAnalysis/journeys/{journey_datetime}/mos-percentages</strong></h3>
+                        Tags:
+                            <a href="#tag-journeys">journeys</a>
+                </div>
+                <div class="panel-body">
+                    <section class="sw-operation-description">
+                        <p>Returns the percetanges of mos categories from a journey</p>
+            
+                    </section>
+            
+                    
+                        <section class="sw-request-params">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th class="sw-param-name"></th>
+                                    <th class="sw-param-description"></th>
+                                    <th class="sw-param-type"></th>
+                                    <th class="sw-param-data-type"></th>
+                                    <th class="sw-param-annotation"></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                        <tr>
+                                            <td>
+                                                journey_datetime
+                                            </td>
+                                            <td></td>
+                                            <td>path</td>
+                                            <td>
+                                        <span class="json-property-type">object</span>
+                                        <span class="json-property-range" title="Value limits"></span>
+                                        
+                                            </td>
+                                            <td>
+                                                    <span class="json-property-required"></span>
+                                            </td>
+                                        </tr>
+                                </tbody>
+                            </table>
+                        </section>
+                    
+                        <section class="sw-responses">
+                    
+                            <dl>
+                                    <dt class="sw-response-200">
+                                        200 OK
+                                    
+                                    </dt>
+                                    <dd class="sw-response-200">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p>Mos categories of journey</p>
+                                            
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                            </div>
+                                            
+                                            </div>                </dd>
+                                    <dt class="sw-response-404">
+                                        404 Not Found
+                                    
+                                    </dt>
+                                    <dd class="sw-response-404">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p>Journey not found</p>
+                                            
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                            </div>
+                                            
+                                            </div>                </dd>
+                                    <dt class="sw-response-default">
+                                        default 
+                                    
+                                    </dt>
+                                    <dd class="sw-response-default">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p>Unexpected server response</p>
+                                            
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                            </div>
+                                            
+                                            </div>                </dd>
+                            </dl>
+                        </section>
+                        <section class="sw-request-security">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th class="sw-request-security-schema"></th>
+                                    <th class="sw-request-security-scopes"></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                        <tr>
+                                            <td><a href="#security-definition-api_key">api_key</a></td>
+                                            <td>
+                                            </td>
+                                        </tr>
+                                </tbody>
+                            </table>
+                        </section>
+                </div>
+            </div>
+        
+        <span id="path--videoAnalysis-journeys--journey_datetime--program-list"></span>
+            <div id="operation--videoAnalysis-journeys--journey_datetime--program-list-get" class="swagger--panel-operation-get panel">
+                <div class="panel-heading">
+                    <div class="operation-summary">Gets data of all programs in journey</div>
+                    <h3 class="panel-title"><span class="operation-name">GET</span> <strong>/videoAnalysis/journeys/{journey_datetime}/program-list</strong></h3>
+                        Tags:
+                            <a href="#tag-journeys">journeys</a>
+                </div>
+                <div class="panel-body">
+                    <section class="sw-operation-description">
+                        <p>Gets data of all programs in journey</p>
+            
+                    </section>
+            
+                    
+                        <section class="sw-request-params">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th class="sw-param-name"></th>
+                                    <th class="sw-param-description"></th>
+                                    <th class="sw-param-type"></th>
+                                    <th class="sw-param-data-type"></th>
+                                    <th class="sw-param-annotation"></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                        <tr>
+                                            <td>
+                                                journey_datetime
+                                            </td>
+                                            <td></td>
+                                            <td>path</td>
+                                            <td>
+                                        <span class="json-property-type">object</span>
+                                        <span class="json-property-range" title="Value limits"></span>
+                                        
+                                            </td>
+                                            <td>
+                                                    <span class="json-property-required"></span>
+                                            </td>
+                                        </tr>
+                                </tbody>
+                            </table>
+                        </section>
+                    
+                        <section class="sw-responses">
+                    
+                            <dl>
+                                    <dt class="sw-response-200">
+                                        200 OK
+                                    
+                                    </dt>
+                                    <dd class="sw-response-200">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p>Data of programs from journey</p>
+                                            
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                            </div>
+                                            
+                                            </div>                </dd>
+                                    <dt class="sw-response-404">
+                                        404 Not Found
+                                    
+                                    </dt>
+                                    <dd class="sw-response-404">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p>Journey not found</p>
+                                            
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                            </div>
+                                            
+                                            </div>                </dd>
+                                    <dt class="sw-response-default">
+                                        default 
+                                    
+                                    </dt>
+                                    <dd class="sw-response-default">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p>Unexpected server response</p>
+                                            
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                            </div>
+                                            
+                                            </div>                </dd>
+                            </dl>
+                        </section>
+                        <section class="sw-request-security">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th class="sw-request-security-schema"></th>
+                                    <th class="sw-request-security-scopes"></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                        <tr>
+                                            <td><a href="#security-definition-api_key">api_key</a></td>
+                                            <td>
+                                            </td>
+                                        </tr>
+                                </tbody>
+                            </table>
+                        </section>
+                </div>
+            </div>
+        
+        <span id="path--videoAnalysis-journeys--journey_datetime--program-name-list"></span>
+            <div id="operation--videoAnalysis-journeys--journey_datetime--program-name-list-get" class="swagger--panel-operation-get panel">
+                <div class="panel-heading">
+                    <div class="operation-summary">Gets names of all programs in journey</div>
+                    <h3 class="panel-title"><span class="operation-name">GET</span> <strong>/videoAnalysis/journeys/{journey_datetime}/program-name-list</strong></h3>
+                        Tags:
+                            <a href="#tag-journeys">journeys</a>
+                </div>
+                <div class="panel-body">
+                    <section class="sw-operation-description">
+                        <p>Gets names of all programs in journey</p>
+            
+                    </section>
+            
+                    
+                        <section class="sw-request-params">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th class="sw-param-name"></th>
+                                    <th class="sw-param-description"></th>
+                                    <th class="sw-param-type"></th>
+                                    <th class="sw-param-data-type"></th>
+                                    <th class="sw-param-annotation"></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                        <tr>
+                                            <td>
+                                                journey_datetime
+                                            </td>
+                                            <td></td>
+                                            <td>path</td>
+                                            <td>
+                                        <span class="json-property-type">object</span>
+                                        <span class="json-property-range" title="Value limits"></span>
+                                        
+                                            </td>
+                                            <td>
+                                                    <span class="json-property-required"></span>
+                                            </td>
+                                        </tr>
+                                </tbody>
+                            </table>
+                        </section>
+                    
+                        <section class="sw-responses">
+                    
+                            <dl>
+                                    <dt class="sw-response-200">
+                                        200 OK
+                                    
+                                    </dt>
+                                    <dd class="sw-response-200">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p>List of programs names</p>
+                                            
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                            </div>
+                                            
+                                            </div>                </dd>
+                                    <dt class="sw-response-404">
+                                        404 Not Found
+                                    
+                                    </dt>
+                                    <dd class="sw-response-404">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p>Journey not found</p>
+                                            
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                            </div>
+                                            
+                                            </div>                </dd>
+                                    <dt class="sw-response-default">
+                                        default 
+                                    
+                                    </dt>
+                                    <dd class="sw-response-default">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p>Unexpected server response</p>
+                                            
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                            </div>
+                                            
+                                            </div>                </dd>
+                            </dl>
+                        </section>
+                        <section class="sw-request-security">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th class="sw-request-security-schema"></th>
+                                    <th class="sw-request-security-scopes"></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                        <tr>
+                                            <td><a href="#security-definition-api_key">api_key</a></td>
+                                            <td>
+                                            </td>
+                                        </tr>
+                                </tbody>
+                            </table>
+                        </section>
+                </div>
+            </div>
+        
+        <span id="path--videoAnalysis-journeys--journey_datetime---program_name-"></span>
+            <div id="operation--videoAnalysis-journeys--journey_datetime---program_name--get" class="swagger--panel-operation-get panel">
+                <div class="panel-heading">
+                    <div class="operation-summary">Gets data of a concrete program in journey</div>
+                    <h3 class="panel-title"><span class="operation-name">GET</span> <strong>/videoAnalysis/journeys/{journey_datetime}/{program_name}</strong></h3>
+                        Tags:
+                            <a href="#tag-journeys">journeys</a>
+                </div>
+                <div class="panel-body">
+                    <section class="sw-operation-description">
+                        <p>Gets data of a concrete program in journey</p>
+            
+                    </section>
+            
+                    
+                        <section class="sw-request-params">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th class="sw-param-name"></th>
+                                    <th class="sw-param-description"></th>
+                                    <th class="sw-param-type"></th>
+                                    <th class="sw-param-data-type"></th>
+                                    <th class="sw-param-annotation"></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                        <tr>
+                                            <td>
+                                                journey_datetime
+                                            </td>
+                                            <td></td>
+                                            <td>path</td>
+                                            <td>
+                                        <span class="json-property-type">object</span>
+                                        <span class="json-property-range" title="Value limits"></span>
+                                        
+                                            </td>
+                                            <td>
+                                                    <span class="json-property-required"></span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                program_name
+                                            </td>
+                                            <td></td>
+                                            <td>path</td>
+                                            <td>
+                                        <span class="json-property-type">object</span>
+                                        <span class="json-property-range" title="Value limits"></span>
+                                        
+                                            </td>
+                                            <td>
+                                                    <span class="json-property-required"></span>
+                                            </td>
+                                        </tr>
+                                </tbody>
+                            </table>
+                        </section>
+                    
+                        <section class="sw-responses">
+                    
+                            <dl>
+                                    <dt class="sw-response-200">
+                                        200 OK
+                                    
+                                    </dt>
+                                    <dd class="sw-response-200">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p>Program from journey</p>
+                                            
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                            </div>
+                                            
+                                            </div>                </dd>
+                                    <dt class="sw-response-404">
+                                        404 Not Found
+                                    
+                                    </dt>
+                                    <dd class="sw-response-404">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p>Journey not found</p>
+                                            
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                            </div>
+                                            
+                                            </div>                </dd>
+                                    <dt class="sw-response-default">
+                                        default 
+                                    
+                                    </dt>
+                                    <dd class="sw-response-default">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p>Unexpected server response</p>
+                                            
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                            </div>
+                                            
+                                            </div>                </dd>
+                            </dl>
+                        </section>
+                        <section class="sw-request-security">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th class="sw-request-security-schema"></th>
+                                    <th class="sw-request-security-scopes"></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                        <tr>
+                                            <td><a href="#security-definition-api_key">api_key</a></td>
+                                            <td>
+                                            </td>
+                                        </tr>
+                                </tbody>
+                            </table>
+                        </section>
+                </div>
+            </div>
+        
+        <span id="path--videoAnalysis-probe-config"></span>
+            <div id="operation--videoAnalysis-probe-config-get" class="swagger--panel-operation-get panel">
+                <div class="panel-heading">
+                    <div class="operation-summary">Gets config of VideoQualityProbe</div>
+                    <h3 class="panel-title"><span class="operation-name">GET</span> <strong>/videoAnalysis/probe/config</strong></h3>
+                        Tags:
+                            <a href="#tag-videoqualityprobe">videoqualityprobe</a>
+                </div>
+                <div class="panel-body">
+                    <section class="sw-operation-description">
+                        <p>Gets the current configuration of the VideoQualityProbe</p>
+            
+                    </section>
+            
+                    
+                        <section class="sw-request-params">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th class="sw-param-name"></th>
+                                    <th class="sw-param-description"></th>
+                                    <th class="sw-param-type"></th>
+                                    <th class="sw-param-data-type"></th>
+                                    <th class="sw-param-annotation"></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                        <tr>
+                                            <td>
+                                                api_key
+                                            </td>
+                                            <td></td>
+                                            <td>header</td>
+                                            <td>
+                                        <span class="json-property-type">object</span>
+                                        <span class="json-property-range" title="Value limits"></span>
+                                        
+                                            </td>
+                                            <td>
+                                            </td>
+                                        </tr>
+                                </tbody>
+                            </table>
+                        </section>
+                    
+                        <section class="sw-responses">
+                    
+                            <dl>
+                                    <dt class="sw-response-200">
+                                        200 OK
+                                    
+                                    </dt>
+                                    <dd class="sw-response-200">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p>Configuration of Video Quality Probe</p>
+                                            
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                            </div>
+                                            
+                                            </div>                </dd>
+                                    <dt class="sw-response-404">
+                                        404 Not Found
+                                    
+                                    </dt>
+                                    <dd class="sw-response-404">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p>Config not found on server</p>
+                                            
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                            </div>
+                                            
+                                            </div>                </dd>
+                                    <dt class="sw-response-default">
+                                        default 
+                                    
+                                    </dt>
+                                    <dd class="sw-response-default">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p>Unexpected server response</p>
+                                            
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                            </div>
+                                            
+                                            </div>                </dd>
+                            </dl>
+                        </section>
+                        <section class="sw-request-security">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th class="sw-request-security-schema"></th>
+                                    <th class="sw-request-security-scopes"></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                        <tr>
+                                            <td><a href="#security-definition-api_key">api_key</a></td>
+                                            <td>
+                                            </td>
+                                        </tr>
+                                </tbody>
+                            </table>
+                        </section>
+                </div>
+            </div>
+            <div id="operation--videoAnalysis-probe-config-put" class="swagger--panel-operation-put panel">
+                <div class="panel-heading">
+                    <div class="operation-summary">Put new config for probe</div>
+                    <h3 class="panel-title"><span class="operation-name">PUT</span> <strong>/videoAnalysis/probe/config</strong></h3>
+                        Tags:
+                            <a href="#tag-videoqualityprobe">videoqualityprobe</a>
+                </div>
+                <div class="panel-body">
+                    <section class="sw-operation-description">
+                        <p>Updates current config</p>
+            
+                    </section>
+            
+                    
+                        <section class="sw-request-params">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th class="sw-param-name"></th>
+                                    <th class="sw-param-description"></th>
+                                    <th class="sw-param-type"></th>
+                                    <th class="sw-param-data-type"></th>
+                                    <th class="sw-param-annotation"></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                        <tr>
+                                            <td>
+                                                api_key
+                                            </td>
+                                            <td></td>
+                                            <td>header</td>
+                                            <td>
+                                        <span class="json-property-type">object</span>
+                                        <span class="json-property-range" title="Value limits"></span>
+                                        
+                                            </td>
+                                            <td>
+                                            </td>
+                                        </tr>
+                                </tbody>
+                            </table>
+                        </section>
+                    
+                        <section class="sw-responses">
+                    
+                            <dl>
+                                    <dt class="sw-response-200">
+                                        200 OK
+                                    
+                                    </dt>
+                                    <dd class="sw-response-200">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p>Config updated successfully</p>
+                                            
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                            </div>
+                                            
+                                            </div>                </dd>
+                                    <dt class="sw-response-default">
+                                        default 
+                                    
+                                    </dt>
+                                    <dd class="sw-response-default">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p>Unexpected server response</p>
+                                            
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                            </div>
+                                            
+                                            </div>                </dd>
+                            </dl>
+                        </section>
+                        <section class="sw-request-security">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th class="sw-request-security-schema"></th>
+                                    <th class="sw-request-security-scopes"></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                        <tr>
+                                            <td><a href="#security-definition-api_key">api_key</a></td>
+                                            <td>
+                                            </td>
+                                        </tr>
+                                </tbody>
+                            </table>
+                        </section>
+                </div>
+            </div>
+        
+        <span id="path--videoAnalysis-probe-launch"></span>
+            <div id="operation--videoAnalysis-probe-launch-post" class="swagger--panel-operation-post panel">
+                <div class="panel-heading">
+                    <div class="operation-summary">Launchs Video Quality Probe</div>
+                    <h3 class="panel-title"><span class="operation-name">POST</span> <strong>/videoAnalysis/probe/launch</strong></h3>
+                        Tags:
+                            <a href="#tag-videoqualityprobe">videoqualityprobe</a>
+                </div>
+                <div class="panel-body">
+                    <section class="sw-operation-description">
+                        <p>Video Quality Probe starts analyzing video</p>
+            
+                    </section>
+            
+                    
+                        <section class="sw-request-params">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th class="sw-param-name"></th>
+                                    <th class="sw-param-description"></th>
+                                    <th class="sw-param-type"></th>
+                                    <th class="sw-param-data-type"></th>
+                                    <th class="sw-param-annotation"></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                        <tr>
+                                            <td>
+                                                api_key
+                                            </td>
+                                            <td></td>
+                                            <td>header</td>
+                                            <td>
+                                        <span class="json-property-type">object</span>
+                                        <span class="json-property-range" title="Value limits"></span>
+                                        
+                                            </td>
+                                            <td>
+                                            </td>
+                                        </tr>
+                                </tbody>
+                            </table>
+                        </section>
+                    
+                        <section class="sw-responses">
+                    
+                            <dl>
+                                    <dt class="sw-response-200">
+                                        200 OK
+                                    
+                                    </dt>
+                                    <dd class="sw-response-200">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p>Video Quality Probe launched successfully</p>
+                                            
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                            </div>
+                                            
+                                            </div>                </dd>
+                                    <dt class="sw-response-404">
+                                        404 Not Found
+                                    
+                                    </dt>
+                                    <dd class="sw-response-404">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p>VideoQualityProbe config not found</p>
+                                            
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                            </div>
+                                            
+                                            </div>                </dd>
+                                    <dt class="sw-response-default">
+                                        default 
+                                    
+                                    </dt>
+                                    <dd class="sw-response-default">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p>Unexpected server response</p>
+                                            
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                            </div>
+                                            
+                                            </div>                </dd>
+                            </dl>
+                        </section>
+                        <section class="sw-request-security">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th class="sw-request-security-schema"></th>
+                                    <th class="sw-request-security-scopes"></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                        <tr>
+                                            <td><a href="#security-definition-api_key">api_key</a></td>
+                                            <td>
+                                            </td>
+                                        </tr>
+                                </tbody>
+                            </table>
+                        </section>
+                </div>
+            </div>
+        
+        <span id="path--videoAnalysis-probe-status"></span>
+            <div id="operation--videoAnalysis-probe-status-get" class="swagger--panel-operation-get panel">
+                <div class="panel-heading">
+                    <div class="operation-summary">Gets current status of probe</div>
+                    <h3 class="panel-title"><span class="operation-name">GET</span> <strong>/videoAnalysis/probe/status</strong></h3>
+                        Tags:
+                            <a href="#tag-videoqualityprobe">videoqualityprobe</a>
+                </div>
+                <div class="panel-body">
+                    <section class="sw-operation-description">
+                        <p>Gets current status of videoqualityprobe</p>
+            
+                    </section>
+            
+                    
+                        <section class="sw-request-params">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th class="sw-param-name"></th>
+                                    <th class="sw-param-description"></th>
+                                    <th class="sw-param-type"></th>
+                                    <th class="sw-param-data-type"></th>
+                                    <th class="sw-param-annotation"></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                        <tr>
+                                            <td>
+                                                api_key
+                                            </td>
+                                            <td></td>
+                                            <td>header</td>
+                                            <td>
+                                        <span class="json-property-type">object</span>
+                                        <span class="json-property-range" title="Value limits"></span>
+                                        
+                                            </td>
+                                            <td>
+                                            </td>
+                                        </tr>
+                                </tbody>
+                            </table>
+                        </section>
+                    
+                        <section class="sw-responses">
+                    
+                            <dl>
+                                    <dt class="sw-response-200">
+                                        200 OK
+                                    
+                                    </dt>
+                                    <dd class="sw-response-200">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p>Status of videoqualityprobe</p>
+                                            
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                            </div>
+                                            
+                                            </div>                </dd>
+                                    <dt class="sw-response-default">
+                                        default 
+                                    
+                                    </dt>
+                                    <dd class="sw-response-default">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p>Unexpected server response</p>
+                                            
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                            </div>
+                                            
+                                            </div>                </dd>
+                            </dl>
+                        </section>
+                        <section class="sw-request-security">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th class="sw-request-security-schema"></th>
+                                    <th class="sw-request-security-scopes"></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                        <tr>
+                                            <td><a href="#security-definition-api_key">api_key</a></td>
+                                            <td>
+                                            </td>
+                                        </tr>
+                                </tbody>
+                            </table>
+                        </section>
+                </div>
+            </div>
+        
+        <span id="path--videoAnalysis-probe-stop"></span>
+            <div id="operation--videoAnalysis-probe-stop-post" class="swagger--panel-operation-post panel">
+                <div class="panel-heading">
+                    <div class="operation-summary">Stops Video Quality Probe</div>
+                    <h3 class="panel-title"><span class="operation-name">POST</span> <strong>/videoAnalysis/probe/stop</strong></h3>
+                        Tags:
+                            <a href="#tag-videoqualityprobe">videoqualityprobe</a>
+                </div>
+                <div class="panel-body">
+                    <section class="sw-operation-description">
+                        <p>Video Quality Probe stops analyzing video</p>
+            
+                    </section>
+            
+                    
+                        <section class="sw-request-params">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th class="sw-param-name"></th>
+                                    <th class="sw-param-description"></th>
+                                    <th class="sw-param-type"></th>
+                                    <th class="sw-param-data-type"></th>
+                                    <th class="sw-param-annotation"></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                        <tr>
+                                            <td>
+                                                api_key
+                                            </td>
+                                            <td></td>
+                                            <td>header</td>
+                                            <td>
+                                        <span class="json-property-type">object</span>
+                                        <span class="json-property-range" title="Value limits"></span>
+                                        
+                                            </td>
+                                            <td>
+                                            </td>
+                                        </tr>
+                                </tbody>
+                            </table>
+                        </section>
+                    
+                        <section class="sw-responses">
+                    
+                            <dl>
+                                    <dt class="sw-response-200">
+                                        200 OK
+                                    
+                                    </dt>
+                                    <dd class="sw-response-200">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p>Video Quality Probe stopped successfully</p>
+                                            
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                            </div>
+                                            
+                                            </div>                </dd>
+                                    <dt class="sw-response-404">
+                                        404 Not Found
+                                    
+                                    </dt>
+                                    <dd class="sw-response-404">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p>VideoQualityProbe not started yet</p>
+                                            
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                            </div>
+                                            
+                                            </div>                </dd>
+                                    <dt class="sw-response-default">
+                                        default 
+                                    
+                                    </dt>
+                                    <dd class="sw-response-default">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p>Unexpected server response</p>
+                                            
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                            </div>
+                                            
+                                            </div>                </dd>
+                            </dl>
+                        </section>
+                        <section class="sw-request-security">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th class="sw-request-security-schema"></th>
+                                    <th class="sw-request-security-scopes"></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                        <tr>
+                                            <td><a href="#security-definition-api_key">api_key</a></td>
+                                            <td>
+                                            </td>
+                                        </tr>
+                                </tbody>
+                            </table>
+                        </section>
+                </div>
+            </div>
+        
+        <span id="path--videoAnalysis-programs--program_name--alert-list"></span>
+            <div id="operation--videoAnalysis-programs--program_name--alert-list-get" class="swagger--panel-operation-get panel">
+                <div class="panel-heading">
+                    <div class="operation-summary">Gets a list of alerts/warnings of specific program</div>
+                    <h3 class="panel-title"><span class="operation-name">GET</span> <strong>/videoAnalysis/programs/{program_name}/alert-list</strong></h3>
+                        Tags:
+                            <a href="#tag-programs">programs</a>
+                </div>
+                <div class="panel-body">
+                    <section class="sw-operation-description">
+                        <p>Gets a list of alerts/warnings of specific program</p>
+            
+                    </section>
+            
+                    
+                        <section class="sw-request-params">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th class="sw-param-name"></th>
+                                    <th class="sw-param-description"></th>
+                                    <th class="sw-param-type"></th>
+                                    <th class="sw-param-data-type"></th>
+                                    <th class="sw-param-annotation"></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                        <tr>
+                                            <td>
+                                                program_name
+                                            </td>
+                                            <td></td>
+                                            <td>path</td>
+                                            <td>
+                                        <span class="json-property-type">object</span>
+                                        <span class="json-property-range" title="Value limits"></span>
+                                        
+                                            </td>
+                                            <td>
+                                                    <span class="json-property-required"></span>
+                                            </td>
+                                        </tr>
+                                </tbody>
+                            </table>
+                        </section>
+                    
+                        <section class="sw-responses">
+                    
+                            <dl>
+                                    <dt class="sw-response-200">
+                                        200 OK
+                                    
+                                    </dt>
+                                    <dd class="sw-response-200">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p>List of alerts/warnings of specific program</p>
+                                            
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                            </div>
+                                            
+                                            </div>                </dd>
+                                    <dt class="sw-response-404">
+                                        404 Not Found
+                                    
+                                    </dt>
+                                    <dd class="sw-response-404">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p>Program not found</p>
+                                            
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                            </div>
+                                            
+                                            </div>                </dd>
+                                    <dt class="sw-response-default">
+                                        default 
+                                    
+                                    </dt>
+                                    <dd class="sw-response-default">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p>Unexpected server response</p>
+                                            
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                            </div>
+                                            
+                                            </div>                </dd>
+                            </dl>
+                        </section>
+                        <section class="sw-request-security">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th class="sw-request-security-schema"></th>
+                                    <th class="sw-request-security-scopes"></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                        <tr>
+                                            <td><a href="#security-definition-api_key">api_key</a></td>
+                                            <td>
+                                            </td>
+                                        </tr>
+                                </tbody>
+                            </table>
+                        </section>
+                </div>
+            </div>
+        
+        <span id="path--videoAnalysis-programs--program_name--alert-number"></span>
+            <div id="operation--videoAnalysis-programs--program_name--alert-number-get" class="swagger--panel-operation-get panel">
+                <div class="panel-heading">
+                    <div class="operation-summary">Gets number of alerts/warnings of specific program</div>
+                    <h3 class="panel-title"><span class="operation-name">GET</span> <strong>/videoAnalysis/programs/{program_name}/alert-number</strong></h3>
+                        Tags:
+                            <a href="#tag-programs">programs</a>
+                </div>
+                <div class="panel-body">
+                    <section class="sw-operation-description">
+                        <p>Gets number of alerts/warnings of specific program</p>
+            
+                    </section>
+            
+                    
+                        <section class="sw-request-params">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th class="sw-param-name"></th>
+                                    <th class="sw-param-description"></th>
+                                    <th class="sw-param-type"></th>
+                                    <th class="sw-param-data-type"></th>
+                                    <th class="sw-param-annotation"></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                        <tr>
+                                            <td>
+                                                program_name
+                                            </td>
+                                            <td></td>
+                                            <td>path</td>
+                                            <td>
+                                        <span class="json-property-type">object</span>
+                                        <span class="json-property-range" title="Value limits"></span>
+                                        
+                                            </td>
+                                            <td>
+                                                    <span class="json-property-required"></span>
+                                            </td>
+                                        </tr>
+                                </tbody>
+                            </table>
+                        </section>
+                    
+                        <section class="sw-responses">
+                    
+                            <dl>
+                                    <dt class="sw-response-200">
+                                        200 OK
+                                    
+                                    </dt>
+                                    <dd class="sw-response-200">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p>Number of alerts in program</p>
+                                            
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                            </div>
+                                            
+                                            </div>                </dd>
+                                    <dt class="sw-response-404">
+                                        404 Not Found
+                                    
+                                    </dt>
+                                    <dd class="sw-response-404">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p>Program not found</p>
+                                            
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                            </div>
+                                            
+                                            </div>                </dd>
+                                    <dt class="sw-response-default">
+                                        default 
+                                    
+                                    </dt>
+                                    <dd class="sw-response-default">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p>Unexpected server response</p>
+                                            
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                            </div>
+                                            
+                                            </div>                </dd>
+                            </dl>
+                        </section>
+                        <section class="sw-request-security">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th class="sw-request-security-schema"></th>
+                                    <th class="sw-request-security-scopes"></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                        <tr>
+                                            <td><a href="#security-definition-api_key">api_key</a></td>
+                                            <td>
+                                            </td>
+                                        </tr>
+                                </tbody>
+                            </table>
+                        </section>
+                </div>
+            </div>
+        
+        <span id="path--videoAnalysis-programs--program_name--data"></span>
+            <div id="operation--videoAnalysis-programs--program_name--data-get" class="swagger--panel-operation-get panel">
+                <div class="panel-heading">
+                    <div class="operation-summary">Gets data of specific program</div>
+                    <h3 class="panel-title"><span class="operation-name">GET</span> <strong>/videoAnalysis/programs/{program_name}/data</strong></h3>
+                        Tags:
+                            <a href="#tag-programs">programs</a>
+                </div>
+                <div class="panel-body">
+                    <section class="sw-operation-description">
+                        <p>Gets data of specific program</p>
+            
+                    </section>
+            
+                    
+                        <section class="sw-request-params">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th class="sw-param-name"></th>
+                                    <th class="sw-param-description"></th>
+                                    <th class="sw-param-type"></th>
+                                    <th class="sw-param-data-type"></th>
+                                    <th class="sw-param-annotation"></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                        <tr>
+                                            <td>
+                                                program_name
+                                            </td>
+                                            <td></td>
+                                            <td>path</td>
+                                            <td>
+                                        <span class="json-property-type">object</span>
+                                        <span class="json-property-range" title="Value limits"></span>
+                                        
+                                            </td>
+                                            <td>
+                                                    <span class="json-property-required"></span>
+                                            </td>
+                                        </tr>
+                                </tbody>
+                            </table>
+                        </section>
+                    
+                        <section class="sw-responses">
+                    
+                            <dl>
+                                    <dt class="sw-response-200">
+                                        200 OK
+                                    
+                                    </dt>
+                                    <dd class="sw-response-200">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p>Program data</p>
+                                            
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                            </div>
+                                            
+                                            </div>                </dd>
+                                    <dt class="sw-response-404">
+                                        404 Not Found
+                                    
+                                    </dt>
+                                    <dd class="sw-response-404">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p>Program not found</p>
+                                            
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                            </div>
+                                            
+                                            </div>                </dd>
+                                    <dt class="sw-response-default">
+                                        default 
+                                    
+                                    </dt>
+                                    <dd class="sw-response-default">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p>Unexpected server response</p>
+                                            
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                            </div>
+                                            
+                                            </div>                </dd>
+                            </dl>
+                        </section>
+                        <section class="sw-request-security">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th class="sw-request-security-schema"></th>
+                                    <th class="sw-request-security-scopes"></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                        <tr>
+                                            <td><a href="#security-definition-api_key">api_key</a></td>
+                                            <td>
+                                            </td>
+                                        </tr>
+                                </tbody>
+                            </table>
+                        </section>
+                </div>
+            </div>
+        
+        <span id="path--videoAnalysis-programs--program_name--mos"></span>
+            <div id="operation--videoAnalysis-programs--program_name--mos-get" class="swagger--panel-operation-get panel">
+                <div class="panel-heading">
+                    <div class="operation-summary">Gets average MOS value of specific program</div>
+                    <h3 class="panel-title"><span class="operation-name">GET</span> <strong>/videoAnalysis/programs/{program_name}/mos</strong></h3>
+                        Tags:
+                            <a href="#tag-programs">programs</a>
+                </div>
+                <div class="panel-body">
+                    <section class="sw-operation-description">
+                        <p>Gets average MOS value of specific program</p>
+            
+                    </section>
+            
+                    
+                        <section class="sw-request-params">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th class="sw-param-name"></th>
+                                    <th class="sw-param-description"></th>
+                                    <th class="sw-param-type"></th>
+                                    <th class="sw-param-data-type"></th>
+                                    <th class="sw-param-annotation"></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                        <tr>
+                                            <td>
+                                                program_name
+                                            </td>
+                                            <td></td>
+                                            <td>path</td>
+                                            <td>
+                                        <span class="json-property-type">object</span>
+                                        <span class="json-property-range" title="Value limits"></span>
+                                        
+                                            </td>
+                                            <td>
+                                                    <span class="json-property-required"></span>
+                                            </td>
+                                        </tr>
+                                </tbody>
+                            </table>
+                        </section>
+                    
+                        <section class="sw-responses">
+                    
+                            <dl>
+                                    <dt class="sw-response-200">
+                                        200 OK
+                                    
+                                    </dt>
+                                    <dd class="sw-response-200">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p>Program MOS</p>
+                                            
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                            </div>
+                                            
+                                            </div>                </dd>
+                                    <dt class="sw-response-404">
+                                        404 Not Found
+                                    
+                                    </dt>
+                                    <dd class="sw-response-404">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p>Program not found</p>
+                                            
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                            </div>
+                                            
+                                            </div>                </dd>
+                                    <dt class="sw-response-default">
+                                        default 
+                                    
+                                    </dt>
+                                    <dd class="sw-response-default">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p>Unexpected server response</p>
+                                            
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                            </div>
+                                            
+                                            </div>                </dd>
+                            </dl>
+                        </section>
+                        <section class="sw-request-security">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th class="sw-request-security-schema"></th>
+                                    <th class="sw-request-security-scopes"></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                        <tr>
+                                            <td><a href="#security-definition-api_key">api_key</a></td>
+                                            <td>
+                                            </td>
+                                        </tr>
+                                </tbody>
+                            </table>
+                        </section>
+                </div>
+            </div>
+        
+        <span id="path--videoAnalysis-programs--program_name--mos-percentages"></span>
+            <div id="operation--videoAnalysis-programs--program_name--mos-percentages-get" class="swagger--panel-operation-get panel">
+                <div class="panel-heading">
+                    <div class="operation-summary">Gets MOS categories of specific program</div>
+                    <h3 class="panel-title"><span class="operation-name">GET</span> <strong>/videoAnalysis/programs/{program_name}/mos-percentages</strong></h3>
+                        Tags:
+                            <a href="#tag-programs">programs</a>
+                </div>
+                <div class="panel-body">
+                    <section class="sw-operation-description">
+                        <p>Gets MOS categories of specific program</p>
+            
+                    </section>
+            
+                    
+                        <section class="sw-request-params">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th class="sw-param-name"></th>
+                                    <th class="sw-param-description"></th>
+                                    <th class="sw-param-type"></th>
+                                    <th class="sw-param-data-type"></th>
+                                    <th class="sw-param-annotation"></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                        <tr>
+                                            <td>
+                                                program_name
+                                            </td>
+                                            <td></td>
+                                            <td>path</td>
+                                            <td>
+                                        <span class="json-property-type">object</span>
+                                        <span class="json-property-range" title="Value limits"></span>
+                                        
+                                            </td>
+                                            <td>
+                                                    <span class="json-property-required"></span>
+                                            </td>
+                                        </tr>
+                                </tbody>
+                            </table>
+                        </section>
+                    
+                        <section class="sw-responses">
+                    
+                            <dl>
+                                    <dt class="sw-response-200">
+                                        200 OK
+                                    
+                                    </dt>
+                                    <dd class="sw-response-200">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p>Program MOS categories</p>
+                                            
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                            </div>
+                                            
+                                            </div>                </dd>
+                                    <dt class="sw-response-404">
+                                        404 Not Found
+                                    
+                                    </dt>
+                                    <dd class="sw-response-404">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p>Program not found</p>
+                                            
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                            </div>
+                                            
+                                            </div>                </dd>
+                                    <dt class="sw-response-default">
+                                        default 
+                                    
+                                    </dt>
+                                    <dd class="sw-response-default">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p>Unexpected server response</p>
+                                            
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                            </div>
+                                            
+                                            </div>                </dd>
+                            </dl>
+                        </section>
+                        <section class="sw-request-security">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th class="sw-request-security-schema"></th>
+                                    <th class="sw-request-security-scopes"></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                        <tr>
+                                            <td><a href="#security-definition-api_key">api_key</a></td>
+                                            <td>
+                                            </td>
+                                        </tr>
+                                </tbody>
+                            </table>
+                        </section>
+                </div>
+            </div>
+        
+        <span id="path--videoAnalysis-search-data"></span>
+            <div id="operation--videoAnalysis-search-data-post" class="swagger--panel-operation-post panel">
+                <div class="panel-heading">
+                    <div class="operation-summary">Returns data from a given date range or journey search</div>
+                    <h3 class="panel-title"><span class="operation-name">POST</span> <strong>/videoAnalysis/search/data</strong></h3>
+                        Tags:
+                            <a href="#tag-search">search</a>
+                </div>
+                <div class="panel-body">
+                    <section class="sw-operation-description">
+                        <p>Returns data from a given date range or journey search</p>
+            
+                    </section>
+            
+                    
+                    
+                        <section class="sw-responses">
+                    
+                            <dl>
+                                    <dt class="sw-response-200">
+                                        200 OK
+                                    
+                                    </dt>
+                                    <dd class="sw-response-200">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p>Search results</p>
+                                            
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                            </div>
+                                            
+                                            </div>                </dd>
+                                    <dt class="sw-response-404">
+                                        404 Not Found
+                                    
+                                    </dt>
+                                    <dd class="sw-response-404">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p>No documents in search range</p>
+                                            
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                            </div>
+                                            
+                                            </div>                </dd>
+                                    <dt class="sw-response-default">
+                                        default 
+                                    
+                                    </dt>
+                                    <dd class="sw-response-default">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p>Unexpected server response</p>
+                                            
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                            </div>
+                                            
+                                            </div>                </dd>
+                            </dl>
+                        </section>
+                        <section class="sw-request-security">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th class="sw-request-security-schema"></th>
+                                    <th class="sw-request-security-scopes"></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                        <tr>
+                                            <td><a href="#security-definition-api_key">api_key</a></td>
+                                            <td>
+                                            </td>
+                                        </tr>
+                                </tbody>
+                            </table>
+                        </section>
+                </div>
+            </div>
+        
+        <span id="path--videoAnalysis-search-url"></span>
+            <div id="operation--videoAnalysis-search-url-post" class="swagger--panel-operation-post panel">
+                <div class="panel-heading">
+                    <div class="operation-summary">Returns data from a given date range or journey search</div>
+                    <h3 class="panel-title"><span class="operation-name">POST</span> <strong>/videoAnalysis/search/url</strong></h3>
+                        Tags:
+                            <a href="#tag-search">search</a>
+                </div>
+                <div class="panel-body">
+                    <section class="sw-operation-description">
+                        <p>Returns data from a given date range or journey search</p>
+            
+                    </section>
+            
+                    
+                    
+                        <section class="sw-responses">
+                    
+                            <dl>
+                                    <dt class="sw-response-200">
+                                        200 OK
+                                    
+                                    </dt>
+                                    <dd class="sw-response-200">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p>Url for file resulting from search process</p>
+                                            
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                            </div>
+                                            
+                                            </div>                </dd>
+                                    <dt class="sw-response-404">
+                                        404 Not Found
+                                    
+                                    </dt>
+                                    <dd class="sw-response-404">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p>No documents in search range</p>
+                                            
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                            </div>
+                                            
+                                            </div>                </dd>
+                                    <dt class="sw-response-default">
+                                        default 
+                                    
+                                    </dt>
+                                    <dd class="sw-response-default">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p>Unexpected server response</p>
+                                            
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                            </div>
+                                            
+                                            </div>                </dd>
+                            </dl>
+                        </section>
+                        <section class="sw-request-security">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th class="sw-request-security-schema"></th>
+                                    <th class="sw-request-security-scopes"></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                        <tr>
+                                            <td><a href="#security-definition-api_key">api_key</a></td>
+                                            <td>
+                                            </td>
+                                        </tr>
+                                </tbody>
+                            </table>
+                        </section>
+                </div>
+            </div>
+        
+        <span id="path--videoAnalysis-updateFrame"></span>
+            <div id="operation--videoAnalysis-updateFrame-get" class="swagger--panel-operation-get panel">
+                <div class="panel-heading">
+                    <div class="operation-summary">Gets thumbnail frame</div>
+                    <h3 class="panel-title"><span class="operation-name">GET</span> <strong>/videoAnalysis/updateFrame</strong></h3>
+                        Tags:
+                            <a href="#tag-others">others</a>
+                </div>
+                <div class="panel-body">
+                    <section class="sw-operation-description">
+                        <p>Updates thumbnail frame from current video/stream</p>
+            
+                    </section>
+            
+                    
+                        <section class="sw-request-params">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th class="sw-param-name"></th>
+                                    <th class="sw-param-description"></th>
+                                    <th class="sw-param-type"></th>
+                                    <th class="sw-param-data-type"></th>
+                                    <th class="sw-param-annotation"></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                        <tr>
+                                            <td>
+                                                api_key
+                                            </td>
+                                            <td></td>
+                                            <td>header</td>
+                                            <td>
+                                        <span class="json-property-type">object</span>
+                                        <span class="json-property-range" title="Value limits"></span>
+                                        
+                                            </td>
+                                            <td>
+                                            </td>
+                                        </tr>
+                                </tbody>
+                            </table>
+                        </section>
+                    
+                        <section class="sw-responses">
+                    
+                            <dl>
+                                    <dt class="sw-response-200">
+                                        200 OK
+                                    
+                                    </dt>
+                                    <dd class="sw-response-200">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p>Updated frame succesfully</p>
+                                            
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                            </div>
+                                            
+                                            </div>                </dd>
+                                    <dt class="sw-response-default">
+                                        default 
+                                    
+                                    </dt>
+                                    <dd class="sw-response-default">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p>Unexpected server response</p>
+                                            
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                            </div>
+                                            
+                                            </div>                </dd>
+                            </dl>
+                        </section>
+                        <section class="sw-request-security">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th class="sw-request-security-schema"></th>
+                                    <th class="sw-request-security-scopes"></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                        <tr>
+                                            <td><a href="#security-definition-api_key">api_key</a></td>
+                                            <td>
+                                            </td>
+                                        </tr>
+                                </tbody>
+                            </table>
+                        </section>
+                </div>
+            </div>
+        
+        <span id="path--videoAnalysis-vod-upload"></span>
+            <div id="operation--videoAnalysis-vod-upload-get" class="swagger--panel-operation-get panel">
+                <div class="panel-heading">
+                    <div class="operation-summary">Uploads file to server for VOD analysis</div>
+                    <h3 class="panel-title"><span class="operation-name">GET</span> <strong>/videoAnalysis/vod/upload</strong></h3>
+                        Tags:
+                            <a href="#tag-vod">vod</a>
+                </div>
+                <div class="panel-body">
+                    <section class="sw-operation-description">
+                        <p>Uploads file to server for VOD analysis</p>
+            
+                    </section>
+            
+                    
+                    
+                        <section class="sw-responses">
+                    
+                            <dl>
+                                    <dt class="sw-response-200">
+                                        200 OK
+                                    
+                                    </dt>
+                                    <dd class="sw-response-200">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p>URL of uploaded file in server</p>
+                                            
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                            </div>
+                                            
+                                            </div>                </dd>
+                                    <dt class="sw-response-400">
+                                        400 Bad Request
+                                    
+                                    </dt>
+                                    <dd class="sw-response-400">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p>File already in server</p>
+                                            
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                            </div>
+                                            
+                                            </div>                </dd>
+                                    <dt class="sw-response-404">
+                                        404 Not Found
+                                    
+                                    </dt>
+                                    <dd class="sw-response-404">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p>File not found</p>
+                                            
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                            </div>
+                                            
+                                            </div>                </dd>
+                                    <dt class="sw-response-default">
+                                        default 
+                                    
+                                    </dt>
+                                    <dd class="sw-response-default">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p>Unexpected server response</p>
+                                            
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                            </div>
+                                            
+                                            </div>                </dd>
+                            </dl>
+                        </section>
+                        <section class="sw-request-security">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th class="sw-request-security-schema"></th>
+                                    <th class="sw-request-security-scopes"></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                        <tr>
+                                            <td><a href="#security-definition-api_key">api_key</a></td>
+                                            <td>
+                                            </td>
+                                        </tr>
+                                </tbody>
+                            </table>
+                        </section>
+                </div>
+            </div>
+    
+     
+    
+                       
+    
+</div>
+
+</body>
+</html>

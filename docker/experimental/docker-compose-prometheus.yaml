@@ -1,0 +1,25 @@
+version: '3.7'
+services:
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    command:
+    - --config.file=/etc/prometheus/prometheus.yml
+    volumes:
+    - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+    depends_on:
+    - cadvisor
+    network_mode: "host"
+  cadvisor:
+    image: google/cadvisor:latest
+    container_name: cadvisor
+    network_mode: "host"
+    depends_on: 
+    - "websonda"
+    volumes:
+    - /:/rootfs:ro
+    - /var/run:/var/run:rw
+    - /sys:/sys:ro
+    - /var/lib/docker/:/var/lib/docker:ro
+  
+

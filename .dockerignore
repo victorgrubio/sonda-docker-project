@@ -1,0 +1,21 @@
+# Ignore git and settings (eclipse)
+.git
+.settings
+db
+# Ignore content of videoqualityprobe except Release
+videoqualityprobe/*
+!videoqualityprobe/Release
+# Ignore videoqualityprediction except dist
+video-quality-prediction/*
+!video-quality-prediction/dist
+#Data manager tests
+data-manager/**/__pycache__
+data-manager/tests/data/**
+data-manager/data_manager/tests/data/**
+# Virtualenvs
+venv
+videoQA_env
+# Docs
+data-manager/docs
+websonda/.nuxt/**
+docker/experimental/grafana-data/**

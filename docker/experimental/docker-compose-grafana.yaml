@@ -1,0 +1,56 @@
+version: '3.7'
+services:
+  prometheus:
+     image: prom/prometheus
+     volumes:
+       - $PWD/monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
+     network_mode: "host"
+     deploy:
+       placement:
+         constraints:
+           - node.role == manager
+  manager-001:       
+    image: prom/node-exporter       
+    volumes:       
+      - /proc:/host/proc:ro       
+      - /sys:/host/sys:ro       
+      - /:/rootfs:ro       
+    command:       
+      - '--path.procfs=/host/proc'       
+      - '--path.sysfs=/host/sys'       
+      - '--path.rootfs=/host'       
+      - '--collector.filesystem.ignored-mount-points="^(/rootfs|/host|)/(sys|proc|dev|host|etc)($$|/)"'       
+      - '--collector.filesystem.ignored-fs-types="^(sys|proc|auto|cgroup|devpts|ns|au|fuse\.lxc|mqueue)(fs|)$$"'   
+    network_mode: "host"
+    deploy:       
+      placement:       
+        constraints:       
+         # Hostname of the manager node!       
+         - node.hostname == manager-001       
+  docker-manager-001:
+    image: google/cadvisor:latest
+    volumes:
+    - /:/rootfs:ro
+    - /var/run:/var/run:rw
+    - /sys:/sys:ro
+    - /var/lib/docker/:/var/lib/docker:ro
+    network_mode: "host"
+    deploy:
+     placement:
+       constraints:
+        # Hostname of the first manager node!
+         - node.hostname == manager-001
+  grafana:
+    image: grafana/grafana
+    volumes: 
+     - $PWD/grafana-data:/var/lib/grafana
+    network_mode: "host"
+    deploy:
+     placement:
+       constraints:
+         - node.role == manager
+
+networks:
+  host_network:
+    external: true
+    name: "host"

@@ -1,0 +1,39 @@
+version: '3.7'
+services:
+  sonda:
+    image: iagofcfm/sonda:latest
+    volumes:
+    - ./${SHARED_FOLDER}:/data/images
+    environment:
+      - API_PORT
+      - DB_PORT
+    networks:
+      - host_network
+    deploy:
+      resources:
+        limits:
+          memory: 4G
+  websonda:
+    image: iagofcfm/sonda:latest-w
+    networks:
+      - host_network
+    volumes:
+      - ./${SHARED_FOLDER}:/usr/src/nuxt-app/static/image/frame
+    environment:
+      - API_PORT=${API_PORT}
+      - WEB_PORT=${WEB_PORT}
+    deploy:
+      resources:
+        limits:
+          memory: 1G
+          cpus: "1.0"
+  mongo:
+    image: mongo:4
+    networks:
+      - host_network
+    entrypoint: mongod --port ${DB_PORT} --syslog
+
+networks:
+  host_network:
+    external: true
+    name: "host"
